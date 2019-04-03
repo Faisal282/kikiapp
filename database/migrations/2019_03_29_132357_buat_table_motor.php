@@ -15,6 +15,7 @@ class BuatTableMotor extends Migration
             $table->string('tahun');
             $table->string('jenis');
             $table->string('asal');
+            $table->string('gambar');
             $table->timestamps();
         });
     }

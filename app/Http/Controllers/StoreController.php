@@ -7,10 +7,14 @@ use App\Models\Store as Store;
 
 class StoreController extends Controller
 {
+    public function __construct() {
+        $this->middleware("auth");
+    }
+
     public function index()
     {
-        $store = Store::paginate(1);
-        return view('store.index', compact('store'));
+        $stores = Store::paginate(1);
+        return view('admin.motor.index', compact('stores'));
     }
 
     public function create()
@@ -26,6 +30,7 @@ class StoreController extends Controller
             'tahun' => 'required',
             'jenis' => 'required',
             'asal' => 'required',
+            'gambar' => 'required'
         ]);
 
         $store = new Store;
@@ -34,6 +39,7 @@ class StoreController extends Controller
         $store->tahun = $request->tahun;
         $store->jenis = $request->jenis;
         $store->asal = $request->asal;
+        $store->gambar = $request->gambar;
         $store->save();
 
         return redirect('/store');

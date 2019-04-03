@@ -14,12 +14,13 @@
 			@endforeach
 		</ul>
 	@endif
-	<form action="/store/tambah" method="post">
+	<form action="/store/tambah" method="post" enctype="multipart/form-data">
 		<input type="text" name="nama" placeholder="nama motor"><br>
 		<input type="text" name="brand" placeholder="nama brand"><br>
 		<input type="text" name="tahun" placeholder="nama tahun"><br>
 		<input type="text" name="jenis" placeholder="nama jenis"><br>
 		<input type="text" name="asal" placeholder="nama asal"><br>
+		<input type="file" name="gambar" id="gambar">
 		<button type="submit">OK</button>
 		<input type="hidden" name="_method" name="store">
 	@csrf

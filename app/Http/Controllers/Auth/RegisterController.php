@@ -86,7 +86,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'token' => str_random(20)
+            'token' => str_random(20),
         ]);
         //mengirim email
         Mail::to($user->email)->send(new userRegistered($user));

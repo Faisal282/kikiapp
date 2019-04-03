@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class adminMiddleware
+class AdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,10 +17,12 @@ class adminMiddleware
     {
         $user = $request->user();
 
-        if ($user->isAdmin()) {
-            return $next($request);
+        if ($user) {
+            if ($user->isAdmin()) {
+                return $next($request);
+            }
         }
 
-        return redirect(404);
+        return response(view('errors.403'), 403);
     }
 }
